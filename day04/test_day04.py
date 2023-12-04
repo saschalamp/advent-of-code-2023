@@ -1,6 +1,6 @@
 import unittest
 
-from day04 import Card, solve_part1, build_cards
+from day04 import Card, solve_part1, solve_part2
 
 class Day04Part1(unittest.TestCase):
 
@@ -55,6 +55,49 @@ class Day04Part1(unittest.TestCase):
         ]
         result = solve_part1(cards)
         self.assertEqual(result, 13)
+
+
+class Day04Part2(unittest.TestCase):
+
+    def test_trivial(self):
+        cards = []
+        result = solve_part2(cards)
+        self.assertEqual(result, 0)
+
+    def test_win_1(self):
+        cards = [
+            Card([4], [4])
+        ]
+        result = solve_part2(cards)
+        self.assertEqual(result, 1)
+
+    def test_win_2_individual(self):
+        cards = [
+            Card([4, 5], [4, 6]),
+            Card([2, 3], [2, 7])
+        ]
+        result = solve_part2(cards)
+        self.assertEqual(result, 3)
+
+    def test_win_2_in_first_card(self):
+        cards = [
+            Card([4, 5], [4, 5]),
+            Card([2, 3], [6, 7])
+        ]
+        result = solve_part2(cards)
+        self.assertEqual(result, 3)
+
+    def test_example(self):
+        cards = [
+            Card([41, 48, 83, 86, 17], [83, 86, 6, 31, 17, 9, 48, 53]),
+            Card([13, 32, 20, 16, 61], [61, 30, 68, 82, 17, 32, 24, 19]),
+            Card([1, 21, 53, 59, 44], [69, 82, 63, 72, 16, 21, 14, 1]),
+            Card([41, 92, 73, 84, 69], [59, 84, 76, 51, 58, 5, 54, 83]),
+            Card([87, 83, 26, 28, 32], [88, 30, 70, 12, 93, 22, 82, 36]),
+            Card([31, 18, 13, 56, 72], [74, 77, 10, 23, 35, 67, 36, 11])
+        ]
+        result = solve_part2(cards)
+        self.assertEqual(result, 30)
 
 
 if __name__ == '__main__':
